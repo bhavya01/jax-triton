@@ -528,6 +528,7 @@ def triton_kernel_call_lowering(
     call_proto = kernel_call.to_proto(kernel_call_name, serialized_metadata)
   else:
     call_proto = kernel_call.to_proto(serialized_metadata)
+  print(zlib.compress(call_proto))
   return jaxlib.hlo_helpers.custom_call(
       call_target_name=custom_call_target_name,
       result_types=out_types,
